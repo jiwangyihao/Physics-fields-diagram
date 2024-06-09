@@ -1,0 +1,173 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=flowGL-noise&gl=1&theme=dark&code=CQOg5gpgLgygxgJwJYAcoAoBQACbByACyihQGcAuAekoDMBDUqAGwE8QArUgEwiaQDcEIAHbRKwlAFtKpJJJRMIADwC0wgPZJSEAAIAmEABYQABhlyFytZu0dSeTAEoQXdaPQ0ArsLhQkb7HRHbABvHGx-OgRsDS0IbABeGIgAd2wYC0UlADkbCHQAWTooAhAEOmFXSUcAbnDI6NjtPUTktIz5LNy4wuLS8sr1arrcBuwuJAqARlaAbSmDAFYAGmw9ExBFgF0RiKjxyeEWpNm9AHZN1fXNnfr9gGsARxmkqd2xp-PsFUN3_aUtARPK03uEvD4_AFIKJylAIAARYp0IKhcKjfZcJFzW64XA0dTRdBjJCtEw1bAkgA8SUMZIpAGp6cEwrjcfjCWN2KTyVzqdhaTzGcy0ay9tEuEpEiLRYF0E8ZpRAkUSiAUOoUugSSoDtNZiYtldgvTsMrSmqNVztRNdVMDWtHA7sAAqaUywJanXCKZ6raOyiumWmkCkR4IDBB82a76e736w3YY0R9XoS0x-Z2vSO-kB3HoOWPFqK3oqyMe61HH3xxN9VXJ1PlvTpw2Ol1u0VRq2HRv6v051lBkNh4tm5NlruV-0Jk01yP18e25u7GVjLgsKVt3B5-XYItJjVj3VxyfVkt16Pl70L-0tvu5uc233Bf0b3ED0Phmej8-HWMZo3T08LW_B9mwTW8twLHclU_fdgIrI9MynPcUzgxsr0zG8X03e8K1tXssIA0pBw_QCO09bs_yQmCUM7Co0L_WoczgNxSHURQQCYdQwHQCVVlXRi22ocZJQSHMhM3IM6AAI1IHilCfQIJUSBIkhMbAAH5sBmchhJbQjaw1SSZLkxxVgBUggQEt0hNXddrMVCSa2k2T-Kgni1xU1SNK07AdP44InX0yMjJclhTOwczLKXUUxkkOgwFaZC3yHJTAqU41bLSsKzMBTwrOXOgmCKET9LipQiUK4rVjisB8piyqkGERKa0kRqKqKxrqviurWUxKA6FVTwLPQWYkFWdg-KUPiWC6sBfWi3AAF8RWW1kEGgTwECavq6F2VaxT2DqmqSABJYQaEapAoBYP5okiIq6BKlQzou4Qrpuu5xSxJJoQgWEESRIJdkkFgAGECCiKBg2gAB5NB_GEdAWVxfgtE8Sq6BQHTkdZCz1R0-gmG0ZZXVa4QdPugpOtJx6KYxqbXQmSQIGEWQ3B0wwSZlRqACUKkgbGmLYgkdNmW88AQMApORRYTGWWXlj0RYVg2AA2Rw8C5jcJalmW5YVpWVZATNNfFyXpfQdY5amEx9aN9XTZfHWLb0G3limN2FbVpWNa1ttneRPR1nd4PDHtxZfbN3XLaV92AGY5dpZY1bOCPHe183A4TkO5bjo2zkjp3M8tvP3bd7ONjOH30_94u9CTm25djyu079t0A8tww9GWABOJu5cr1PC4z6P685gAOa2jfH4fa9HwxVeWM5rYHkBx-rtuZQ7-vx-WVX9eTtfW6jl2Fa9w_x6Hmv27rxYpmWJPV572eb9HxZu4rw-e43k_A8WOPFYDy_sfIub9OZuyflfTeopt7K2TvAqYGscwGhzOoFAdA4DvVFnLLSWxXT7SWm3JQABBcygsZTXRQBAHSeB7qeAgNfXAeMUgE0KsTV0j0tAABlGrUNRG2PgogYDXUUOQjczFOIIBoQAYhoHIhwbYCG4kWtA0gCgro8NEGImUzDWFEwgNA3AgiIDCJYKI_h4jhZSPwLfFYhtFZwI2CbHMSilorTbiwUhWhtG4koXw2hhV6GMOwLowm7CZScNIJovhONRTGNMeY2JMoJEi3wLI-RLj8GqPUVAaJPjcYEHxtgMJBiczxJETE28KTrGwLsXA-xTikGKPwe4kU2hkAQAoNgMWMokm-JYFQmhNBOIpAAOJcOCbgHafkkSGOwOgsMSA4CKHhCzWQ10dILF3jmBZfhlkmKQAALz4d3HMpBPBUIQKQOgnRGpgA5nM3ZSzFAABUBn-OMZM-ZkNnkmKoRALgmzF5ZJFHgpajFFq1CAA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+  <h3>一正一负电荷电场仿真示意（电荷比 1:4）</h3>
+  <div id="container" style="height: 80vmin; width: 80vmin"></div>
+
+  <script type="text/javascript" src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/echarts.min.js"></script>
+  <!-- theme -->
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/theme/dark.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/extension/dataTool.min.js"></script>
+  -->
+
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, 'dark', {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    $.getScript(
+  'https://fastly.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.js'
+).done(function () {
+  var noise = new SimplexNoise(Math.random);
+  var noise2 = new SimplexNoise(Math.random);
+  var dian1 = [12.5, 20.5];
+  var dian2 = [27.5, 20.5];
+  var kq1 = 1;
+  var kq2 = -4;
+  var xishu = 1;
+  function generateData() {
+    var data = [];
+    for (var i = 0; i <= 40; i++) {
+      for (var j = 0; j <= 40; j++) {
+        var dx =
+          ((kq1 / (Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
+            (i - dian1[0])) /
+            Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
+          ((kq2 / (Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
+            (i - dian2[0])) /
+            Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
+        var dy =
+          ((kq1 / (Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
+            (j - dian1[1])) /
+            Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
+          ((kq2 / (Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
+            (j - dian2[1])) /
+            Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
+        console.log(dx, dy);
+        // dx =
+        //   (Math.abs(dx) / (dx === 0 ? 1 : dx)) * Math.pow(Math.abs(dx), xishu);
+        // dy =
+        //   (Math.abs(dy) / (dy === 0 ? 1 : dy)) * Math.pow(Math.abs(dy), xishu);
+        var mag = Math.pow(Math.sqrt(dx * dx + dy * dy), xishu);
+        valMax = Math.max(valMax, mag);
+        valMin = Math.min(valMin, mag);
+        data.push([i, j, dx, dy, mag]);
+      }
+    }
+    return data;
+  }
+  var valMin = Infinity;
+  var valMax = -Infinity;
+  var data = generateData();
+  myChart.setOption({
+    visualMap: {
+      show: false,
+      min: valMin,
+      max: valMax,
+      dimension: 4,
+      inRange: {
+        color: [
+          'rgba(50,50,255,0.6)',
+          'rgba(50,50,255,0.2)',
+          'rgba(200,100,55,0.6)',
+          'rgba(210,110,50,0.625)',
+          'rgba(220,120,45,0.65)',
+          'rgba(225,130,40,0.675)',
+          'rgba(230,120,35,0.7)',
+          'rgba(235,110,30,0.725)',
+          'rgba(240,100,25,0.75)',
+          'rgba(242,90,20,0.775)',
+          'rgba(244,80,15,0.8)',
+          'rgba(246,70,10,0.825)',
+          'rgba(248,60,5,0.85)',
+          'rgba(250,50,0,0.875)',
+          'rgba(251,40,0,0.9)',
+          'rgba(252,30,0,0.925)',
+          'rgba(253,20,0,0.95)',
+          'rgba(254,10,0,0.975)',
+          'rgba(255,0,0,1)'
+        ],
+        opacity: [0, 1]
+      }
+    },
+    xAxis: {
+      type: 'value',
+      show: false,
+      axisLine: {
+        lineStyle: {
+          color: '#fff'
+        }
+      },
+      splitLine: {
+        show: false,
+        lineStyle: {
+          color: 'rgba(255,255,255,0.2)'
+        }
+      }
+    },
+    yAxis: {
+      type: 'value',
+      show:false,
+      axisLine: {
+        lineStyle: {
+          color: '#fff'
+        }
+      },
+      splitLine: {
+        show: false,
+        lineStyle: {
+          color: 'rgba(255,255,255,0.2)'
+        }
+      }
+    },
+    series: [
+      {
+        type: 'flowGL',
+        data: data,
+        particleDensity: 128,
+        particleSize: 2,
+        supersampling: 4,
+        particleType: 'line',
+        particleSpeed: 16,
+      },
+    ]
+  });
+});
+
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
