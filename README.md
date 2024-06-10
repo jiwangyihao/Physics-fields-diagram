@@ -7,3 +7,5 @@
 - [一正一负电荷电场仿真示意（电荷比 1:4）](electron-positive-1-negative-4.html)
 - [垂直平面通电导线磁场仿真示意（电流比 1:4）](magnetic-field-of-an-energized-wire.html)
 - [标量场仿真示意（随机生成）](scalar-field.html)
+
+**如果[这个项目](https://github.com/jiwangyihao/Physics-fields-diagram)有帮助到你，拜托请给它点一个 star！**

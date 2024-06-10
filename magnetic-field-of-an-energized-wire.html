@@ -8,156 +8,159 @@
   <meta charset="utf-8">
   <title>垂直平面通电导线磁场仿真示意（电流比 1:4）</title>
 </head>
-<body style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-  <h3><a href="/" style="font-size: 0.5em">[首页]</a>垂直平面通电导线磁场仿真示意（电流比 1:4）</h3>
-  <div id="container" style="height: 80vmin; width: 80vmin"></div>
+<body
+    style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+<h3><a href="/" style="font-size: 0.5em">[首页]</a>垂直平面通电导线磁场仿真示意（电流比 1:4）</h3>
+<div id="container" style="height: 80vmin; width: 80vmin"></div>
 
-  <script type="text/javascript" src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdmirror.com/npm/echarts@5.5.0/dist/echarts.min.js"></script>
-  <!-- theme -->
-  <script type="text/javascript" src="https://cdn.jsdmirror.com/npm/echarts@5.5.0/theme/dark.js"></script>
-  <!-- Uncomment this line if you want to dataTool extension
-  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/extension/dataTool.min.js"></script>
-  -->
+<script type="text/javascript" src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdmirror.com/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<!-- theme -->
+<script type="text/javascript" src="https://cdn.jsdmirror.com/npm/echarts@5.5.0/theme/dark.js"></script>
+<!-- Uncomment this line if you want to dataTool extension
+<script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/extension/dataTool.min.js"></script>
+-->
 
-  <script type="text/javascript" src="https://cdn.jsdmirror.com/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdmirror.com/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
 
-  <!-- Uncomment this line if you want to echarts-stat extension
-  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
-  -->
-  <!-- Uncomment this line if you want to use map
-  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
-  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
-  -->
-  <!-- Uncomment these two lines if you want to use bmap extension
-  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
-  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/extension/bmap.min.js"></script>
-  -->
+<!-- Uncomment this line if you want to echarts-stat extension
+<script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+-->
+<!-- Uncomment this line if you want to use map
+<script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+<script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+-->
+<!-- Uncomment these two lines if you want to use bmap extension
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+<script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/extension/bmap.min.js"></script>
+-->
 
-  <script type="text/javascript">
-    var dom = document.getElementById('container');
-    var myChart = echarts.init(dom, 'dark', {
-      renderer: 'canvas',
-      useDirtyRect: false
-    });
-    var app = {};
-    
-    var option;
-
-    $.getScript(
-  'https://fastly.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.js'
-).done(function () {
-  var dian1 = [12.5, 20.5];
-  var dian2 = [27.5, 20.5];
-  var iEtc1 = 1;
-  var iEtc2 = -4;
-  var xishu = 1;
-  function generateData() {
-    var data = [];
-    for (var i = 0; i <= 40; i++) {
-      for (var j = 0; j <= 40; j++) {
-        var dx =
-          ((iEtc1 / Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
-            (dian1[1] - j)) /
-            Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
-          ((iEtc2 / Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
-            (dian2[1] - j)) /
-            Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
-        var dy =
-          ((iEtc1 / Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
-            (i - dian1[0])) /
-            Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
-          ((iEtc2 / Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
-            (i - dian2[0])) /
-            Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
-        console.log(dx, dy);
-        // dx =
-        //   (Math.abs(dx) / (dx === 0 ? 1 : dx)) * Math.pow(Math.abs(dx), xishu);
-        // dy =
-        //   (Math.abs(dy) / (dy === 0 ? 1 : dy)) * Math.pow(Math.abs(dy), xishu);
-        var mag = Math.pow(Math.sqrt(dx * dx + dy * dy), xishu);
-        valMax = Math.max(valMax, mag);
-        valMin = Math.min(valMin, mag);
-        data.push([i, j, dx, dy, mag]);
-      }
-    }
-    return data;
-  }
-  var valMin = Infinity;
-  var valMax = -Infinity;
-  var data = generateData();
-  myChart.setOption({
-    visualMap: {
-      show: true,
-      min: valMin,
-      max: valMax,
-      dimension: 4,
-      inRange: {
-        color: [
-          '#4575b4',
-          '#74add1',
-          '#abd9e9',
-          '#e0f3f8',
-          '#ffffbf',
-          '#fee090',
-          '#fdae61',
-          '#f46d43',
-          '#d73027',
-          '#a50026'
-        ],
-        opacity: [0, 1]
-      }
-    },
-    xAxis: {
-      type: 'value',
-      show: false,
-      axisLine: {
-        lineStyle: {
-          color: '#fff'
-        }
-      },
-      splitLine: {
-        show: false,
-        lineStyle: {
-          color: 'rgba(255,255,255,0.2)'
-        }
-      }
-    },
-    yAxis: {
-      type: 'value',
-      show:false,
-      axisLine: {
-        lineStyle: {
-          color: '#fff'
-        }
-      },
-      splitLine: {
-        show: false,
-        lineStyle: {
-          color: 'rgba(255,255,255,0.2)'
-        }
-      }
-    },
-    series: [
-      {
-        type: 'flowGL',
-        data: data,
-        particleDensity: 128,
-        particleSize: 2,
-        supersampling: 4,
-        particleType: 'line',
-        particleSpeed: 16,
-      },
-    ]
+<script type="text/javascript">
+  var dom = document.getElementById('container');
+  var myChart = echarts.init(dom, 'dark', {
+    renderer: 'canvas',
+    useDirtyRect: false
   });
-});
+  var app = {};
 
+  var option;
 
-    if (option && typeof option === 'object') {
-      myChart.setOption(option);
+  $.getScript(
+      'https://fastly.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.js'
+  ).done(function () {
+    var dian1 = [12.5, 20.5];
+    var dian2 = [27.5, 20.5];
+    var iEtc1 = 1;
+    var iEtc2 = -4;
+    var xishu = 1;
+
+    function generateData() {
+      var data = [];
+      for (var i = 0; i <= 40; i++) {
+        for (var j = 0; j <= 40; j++) {
+          var dx =
+              ((iEtc1 / Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
+                  (dian1[1] - j)) /
+              Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
+              ((iEtc2 / Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
+                  (dian2[1] - j)) /
+              Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
+          var dy =
+              ((iEtc1 / Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
+                  (i - dian1[0])) /
+              Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
+              ((iEtc2 / Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
+                  (i - dian2[0])) /
+              Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
+          console.log(dx, dy);
+          // dx =
+          //   (Math.abs(dx) / (dx === 0 ? 1 : dx)) * Math.pow(Math.abs(dx), xishu);
+          // dy =
+          //   (Math.abs(dy) / (dy === 0 ? 1 : dy)) * Math.pow(Math.abs(dy), xishu);
+          var mag = Math.pow(Math.sqrt(dx * dx + dy * dy), xishu);
+          valMax = Math.max(valMax, mag);
+          valMin = Math.min(valMin, mag);
+          data.push([i, j, dx, dy, mag]);
+        }
+      }
+      return data;
     }
 
-    window.addEventListener('resize', myChart.resize);
-  </script>
+    var valMin = Infinity;
+    var valMax = -Infinity;
+    var data = generateData();
+    myChart.setOption({
+      visualMap: {
+        show: true,
+        min: valMin,
+        max: valMax,
+        dimension: 4,
+        inRange: {
+          color: [
+            '#4575b4',
+            '#74add1',
+            '#abd9e9',
+            '#e0f3f8',
+            '#ffffbf',
+            '#fee090',
+            '#fdae61',
+            '#f46d43',
+            '#d73027',
+            '#a50026'
+          ],
+          opacity: [0, 1]
+        }
+      },
+      xAxis: {
+        type: 'value',
+        show: false,
+        axisLine: {
+          lineStyle: {
+            color: '#fff'
+          }
+        },
+        splitLine: {
+          show: false,
+          lineStyle: {
+            color: 'rgba(255,255,255,0.2)'
+          }
+        }
+      },
+      yAxis: {
+        type: 'value',
+        show: false,
+        axisLine: {
+          lineStyle: {
+            color: '#fff'
+          }
+        },
+        splitLine: {
+          show: false,
+          lineStyle: {
+            color: 'rgba(255,255,255,0.2)'
+          }
+        }
+      },
+      series: [
+        {
+          type: 'flowGL',
+          data: data,
+          particleDensity: 48,
+          particleSize: 2,
+          supersampling: 4,
+          particleType: 'point',
+          particleSpeed: 2,
+        },
+      ]
+    });
+  });
+
+
+  if (option && typeof option === 'object') {
+    myChart.setOption(option);
+  }
+
+  window.addEventListener('resize', myChart.resize);
+</script>
 </body>
 </html>
