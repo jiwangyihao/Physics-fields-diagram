@@ -6,10 +6,10 @@
 <html lang="en" style="height: 100%">
 <head>
   <meta charset="utf-8">
-  <title>一正一负电荷电场仿真示意（电荷比 1:4）</title>
+  <title>垂直平面通电导线磁场仿真示意（电流比 1:4）</title>
 </head>
 <body style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-  <h3>一正一负电荷电场仿真示意（电荷比 1:4）</h3>
+  <h3>垂直平面通电导线磁场仿真示意（电流比 1:4）</h3>
   <div id="container" style="height: 80vmin; width: 80vmin"></div>
 
   <script type="text/javascript" src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
@@ -49,27 +49,28 @@
 ).done(function () {
   var dian1 = [12.5, 20.5];
   var dian2 = [27.5, 20.5];
-  var kq1 = 1;
-  var kq2 = -4;
+  var iEtc1 = 1;
+  var iEtc2 = -4;
   var xishu = 1;
   function generateData() {
     var data = [];
     for (var i = 0; i <= 40; i++) {
       for (var j = 0; j <= 40; j++) {
         var dx =
-          ((kq1 / (Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
-            (i - dian1[0])) /
+          ((iEtc1 / Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
+            (dian1[1] - j)) /
             Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
-          ((kq2 / (Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
-            (i - dian2[0])) /
+          ((iEtc2 / Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
+            (dian2[1] - j)) /
             Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
         var dy =
-          ((kq1 / (Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
-            (j - dian1[1])) /
+          ((iEtc1 / Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2))) *
+            (i - dian1[0])) /
             Math.sqrt(Math.pow(i - dian1[0], 2) + Math.pow(j - dian1[1], 2)) +
-          ((kq2 / (Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
-            (j - dian2[1])) /
+          ((iEtc2 / Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2))) *
+            (i - dian2[0])) /
             Math.sqrt(Math.pow(i - dian2[0], 2) + Math.pow(j - dian2[1], 2));
+        console.log(dx, dy);
         // dx =
         //   (Math.abs(dx) / (dx === 0 ? 1 : dx)) * Math.pow(Math.abs(dx), xishu);
         // dy =
